@@ -29,8 +29,8 @@ function dogTable(data) {
             dogForm = document.querySelector('#dog-form');
             dogName = dogForm.elements['name'];
             dogBreed = dogForm.elements['breed'];
-            dogSex = dogForm.elements['sex']
-        })
+            dogSex = dogForm.elements['sex'];
+        });
     });
 
 }
