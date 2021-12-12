@@ -1,38 +1,62 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+dogForm = document.querySelector('#dog-form');
+dogName = dogForm.elements['name'];
+dogBreed = dogForm.elements['breed'];
+dogSex = dogForm.elements['sex'];
 
-fetch('http://localhost:3000/dogs')
-.then(res => res.json())
-.then(data => {
-    dogTable(data)
-});
+function getAllDogs(){
+    fetch('http://localhost:3000/dogs')
+    .then(res => res.json())
+    .then(data => {
+        dogsArray = []
+        data.forEach(dog => {
+        dogsArray.push(dog)
+        });
+    console.log(dogsArray)
+    renderOneDog(dogsArray)
+    submitDogs(dogsArray)
 
-function dogTable(data) {
-    data.forEach(dog => {
+})
+}
+getAllDogs()
 
+function renderOneDog(dogsArray) {
+        dogsArray.forEach(dog => {
         const tableDiv = document.querySelector('#table-body');
-        const newTable = document.createElement('tr');
+        let newTable = document.createElement('tr');
             newTable.innerHTML = `
             <td>${dog.name}</td>
             <td>${dog.breed}</td>
             <td>${dog.sex}</td>
-            <td><button class='edit-button'>'Edit Dog'</button></td>
         `;
+        const editButton =document.createElement('button')
+        editButton.innerHTML = 'Edit Dog'
+        editButton.addEventListener('click', () => { 
+            console.log('click')
+
+            dogName.value = `${dog.name}`;
+            dogBreed.value = `${dog.breed}`;
+            dogSex.value = `${dog.sex}`;
+                
+         });
+
+        newTable.appendChild(editButton)
         tableDiv.appendChild(newTable);
         });
 
-    btnCollection = document.getElementsByClassName('edit-button');
-    const btnArr = Array.from(btnCollection);
-    btnArr.forEach(btn=> {
-        btn.addEventListener('click', () => {
-            console.log('I was clicked');
-            dogForm = document.querySelector('#dog-form');
-            dogName = dogForm.elements['name'];
-            dogBreed = dogForm.elements['breed'];
-            dogSex = dogForm.elements['sex'];
-        });
-    });
-
 }
+function submitDogs(dogsArray) {          
+    dogForm.addEventListener('submit', (e) => {
+        e.preventDefault()
+        for (let dog of dogsArray){
+            dog.name = dogName.value
+            console.log(dog.name)
+        
+    
+        }
+    })
+    }
+}
+)
 
-})
