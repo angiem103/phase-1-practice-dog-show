@@ -13,7 +13,7 @@ function getAllDogs(){
         data.forEach(dog => {
         dogsArray.push(dog)
         });
-    console.log(dogsArray)
+    //console.log(dogsArray)
     renderOneDog(dogsArray)
     submitDogs(dogsArray)
 
@@ -33,7 +33,7 @@ function renderOneDog(dogsArray) {
         const editButton =document.createElement('button')
         editButton.innerHTML = 'Edit Dog'
         editButton.addEventListener('click', () => { 
-            console.log('click')
+            //console.log('click')
 
             dogName.value = `${dog.name}`;
             dogBreed.value = `${dog.breed}`;
