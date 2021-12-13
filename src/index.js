@@ -38,6 +38,8 @@ function renderOneDog(dogsArray) {
             dogName.value = `${dog.name}`;
             dogBreed.value = `${dog.breed}`;
             dogSex.value = `${dog.sex}`;
+
+            submitDogs(dog)
                 
          });
 
@@ -46,16 +48,16 @@ function renderOneDog(dogsArray) {
         });
 
 }
-function submitDogs(dogsArray) {          
+function submitDogs(dog) {          
     dogForm.addEventListener('submit', (e) => {
         e.preventDefault()
-        for (let dog of dogsArray){
+            console.log(dog)
             dog.name = dogName.value
-            console.log(dog.name)
+            console.log(dog)
         
     
         }
-    })
+    )
     }
 }
 )
