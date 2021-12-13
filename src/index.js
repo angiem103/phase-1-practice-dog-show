@@ -15,7 +15,7 @@ function getAllDogs(){
         });
     //console.log(dogsArray)
     renderOneDog(dogsArray)
-    submitDogs(dogsArray)
+    //submitDogs(dogsArray)
 
 })
 }
@@ -40,7 +40,6 @@ function renderOneDog(dogsArray) {
             dogSex.value = `${dog.sex}`;
 
             submitDogs(dog)
-                
          });
 
         newTable.appendChild(editButton)
@@ -48,17 +47,15 @@ function renderOneDog(dogsArray) {
         });
 
 }
-function submitDogs(dog) {          
+function submitDogs(dog) {       
     dogForm.addEventListener('submit', (e) => {
-        e.preventDefault()
-            console.log(dog)
-            dog.name = dogName.value
-            console.log(dog)
-        
-    
+       e.preventDefault()
+        console.log(dog)
+
+    //right now you're targetting dog (any dog), you have to target a specific dog
         }
     )
     }
-}
-)
+
+})
 
